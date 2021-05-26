@@ -1,0 +1,52 @@
+@import "flex";
+@import "boxShadow";
+
+.HomePage {
+  width: 90%;
+  margin: auto;
+  h1 {
+    font-size: 2.5rem;
+    margin: 3rem auto;
+  }
+}
+
+.templates {
+  @extend .flex-row-center;
+  flex-wrap: wrap;
+}
+
+.imgWrapper {
+  width: 15rem;
+  height: 21rem;
+  object-fit: contain;
+  @extend .flex-center;
+  margin: 1rem;
+  @extend .boxShadowSmall;
+  transform: scale(1);
+  transition: transform 0.5s;
+  cursor: pointer;
+
+  img {
+    max-width: 14rem;
+    max-height: 20rem;
+  }
+}
+
+.imgWrapper:hover {
+  @extend .boxShadowMedium;
+  transform: scale(1.05);
+  transition: transform 0.5s;
+}
+
+.footer {
+  @extend .flex-row;
+  justify-content: space-around;
+  margin-top: 3rem;
+  div {
+    text-align: center;
+    li {
+      list-style: none;
+      line-height: 1.5rem;
+    }
+  }
+}
