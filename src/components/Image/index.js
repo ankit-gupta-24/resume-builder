@@ -1,10 +1,11 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 function Image(props) {
   return (
-    <div className="imgWrapper">
+    <NavLink className="imgWrapper" to={`/format/${props.format}`}>
       <img src={props.src} alt={props.src} />
-    </div>
+    </NavLink>
   );
 }
 

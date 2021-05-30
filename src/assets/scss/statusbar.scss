@@ -1,0 +1,27 @@
+@import "flex";
+@import "variables";
+
+.statusbar {
+  @extend .flex-row-space-around;
+  flex-wrap: wrap;
+  margin: 1.5rem auto;
+}
+
+.completed {
+  background-color: $success;
+  font-weight: bold;
+}
+
+.not-completed {
+  background-color: $secondary;
+  color: $white;
+}
+
+.statusbar-item {
+  @extend .flex-center;
+  font-size: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+}

@@ -1,0 +1,47 @@
+@import "variables";
+@import "boxShadow";
+@import "flex";
+
+.form {
+  width: 80vw;
+  margin: auto;
+
+  .title {
+    text-align: center;
+  }
+
+  .form-content {
+    width: 70%;
+    margin: auto;
+    padding: 1rem;
+
+    div {
+      margin: 0.7rem;
+      label {
+        margin-right: 0.5rem;
+        display: block;
+        font-size: 0.8rem;
+      }
+      input {
+        min-width: 60%;
+      }
+    }
+    .form-row {
+      @extend .flex-row-space-between;
+      div {
+        width: 50%;
+      }
+    }
+  }
+}
+
+button {
+  background: $blue;
+  color: $white;
+  @extend .boxShadowSmall;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
