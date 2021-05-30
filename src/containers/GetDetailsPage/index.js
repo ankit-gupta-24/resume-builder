@@ -1,14 +1,15 @@
 import React, { useState } from "react";
-import PersonalDetailsForm from "../../components/PersonalDetailsForm";
-import EducationForm from "../../components/EducationForm";
-import ExperienceForm from "../../components/ExperienceForm";
-import LanguagesForm from "../../components/LanguagesForm";
-import CertificatesAwardsForm from "../../components/CertificatesAwardsForm";
-import PersonalProjectsForm from "../../components/PersonalProjectsForm";
-import ProfileSummaryForm from "../../components/ProfileSummaryForm";
-import SkillsForm from "../../components/SkillsForm";
-import VolunteerWorkForm from "../../components/VolunteerWorkForm";
+import PersonalDetailsForm from "./PersonalDetailsForm";
+import EducationForm from "./EducationForm";
+import ExperienceForm from "./ExperienceForm";
+import LanguagesForm from "./LanguagesForm";
+import CertificatesAwardsForm from "./CertificatesAwardsForm";
+import PersonalProjectsForm from "./PersonalProjectsForm";
+import ProfileSummaryForm from "./ProfileSummaryForm";
+import SkillsForm from "./SkillsForm";
+import VolunteerWorkForm from "./VolunteerWorkForm";
 import StatusBar from "../../components/StatusBar";
+import { NavLink } from "react-router-dom";
 import "../../assets/scss/form.scss";
 
 function GetDetailsPage(props) {
@@ -30,7 +31,7 @@ function GetDetailsPage(props) {
   };
   const getNextButton = () => {
     if (step > 8) {
-      return null;
+      return <NavLink to="/preview" className="print-btn" >Print</NavLink>;
     }
     return <button onClick={next}>Next</button>;
   };

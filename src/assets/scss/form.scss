@@ -8,40 +8,72 @@
 
   .title {
     text-align: center;
+    margin: 1rem;
   }
+}
 
-  .form-content {
-    width: 70%;
-    margin: auto;
-    padding: 1rem;
+.form-content {
+  width: 70%;
+  margin: auto;
+  padding: 1rem;
+}
 
-    div {
-      margin: 0.7rem;
-      label {
-        margin-right: 0.5rem;
-        display: block;
-        font-size: 0.8rem;
-      }
-      input {
-        min-width: 60%;
-      }
-    }
-    .form-row {
-      @extend .flex-row-space-between;
-      div {
-        width: 50%;
-      }
-    }
+.form-row {
+  @extend .flex-row-space-between;
+  flex-wrap: wrap;
+  margin: 0;
+  div {
+    display: inline-block;
+    width: 46%;
+  }
+}
+
+.inputElem {
+  margin: 0.7rem;
+  label {
+    padding: 0.3rem;
+    display: block;
+    font-size: 0.8rem;
+  }
+  input {
+    min-width: 60%;
+    font-size: 0.9rem;
+  }
+  textarea {
+    width: 100%;
+    font-size: 0.9rem;
+    min-height: 10rem;
+    padding: 0.5rem;
   }
 }
 
 button {
+  @extend .boxShadowSmall;
   background: $blue;
   color: $white;
-  @extend .boxShadowSmall;
-  padding: 0.5rem;
-  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
   border: none;
   outline: none;
   cursor: pointer;
+  border-radius: 0.3rem;
+}
+
+.form-group {
+  border: 1px solid $gray;
+  margin: 1rem;
+}
+
+.add-btn {
+  cursor: pointer;
+  color: $blue;
+  padding: 0.5rem;
+}
+
+.print-btn {
+  @extend button;
+  background: $success;
+  text-decoration: none;
+  color: $black;
+  font-weight: bold;
 }
