@@ -30,7 +30,7 @@ function SkillsForm(props) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    saveSkills(skills);
+    dispatch(saveSkills(skills));
   }, [dispatch, skills]);
 
   if (props.step !== 5) {

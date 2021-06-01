@@ -77,3 +77,12 @@ button {
   color: $black;
   font-weight: bold;
 }
+
+.warning {
+  color: $red;
+  background: $yellow;
+  padding: 0.5rem;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}

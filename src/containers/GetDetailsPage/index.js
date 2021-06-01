@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PersonalDetailsForm from "./PersonalDetailsForm";
 import EducationForm from "./EducationForm";
 import ExperienceForm from "./ExperienceForm";
@@ -7,13 +7,26 @@ import CertificatesAwardsForm from "./CertificatesAwardsForm";
 import PersonalProjectsForm from "./PersonalProjectsForm";
 import ProfileSummaryForm from "./ProfileSummaryForm";
 import SkillsForm from "./SkillsForm";
+import Preview from "./Preview";
 import VolunteerWorkForm from "./VolunteerWorkForm";
 import StatusBar from "../../components/StatusBar";
-import { NavLink } from "react-router-dom";
 import "../../assets/scss/form.scss";
+import { useDispatch } from "react-redux";
+import { setResumeFormat } from "../../actions";
 
 function GetDetailsPage(props) {
   const [step, setStep] = useState(1);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setResumeFormat(props.match.params.fn));
+  }, [dispatch, props.match.params.fn]);
+
+  const printIframe = () => {
+    let frame = document.getElementById("resumeFrame");
+    frame.contentWindow.focus();
+    frame.contentWindow.print();
+  };
 
   const prev = () => {
     setStep(step - 1);
@@ -30,8 +43,17 @@ function GetDetailsPage(props) {
     return <button onClick={prev}>Prev</button>;
   };
   const getNextButton = () => {
-    if (step > 8) {
-      return <NavLink to="/preview" className="print-btn" >Print</NavLink>;
+    if (step > 9) {
+      return (
+        <>
+          <small className="warning">
+            <b>Please check everything before printing.</b>
+          </small>
+          <button className="print-btn" onClick={printIframe}>
+            Print
+          </button>
+        </>
+      );
     }
     return <button onClick={next}>Next</button>;
   };
@@ -49,6 +71,7 @@ function GetDetailsPage(props) {
         <LanguagesForm step={step} />
         <VolunteerWorkForm step={step} />
         <CertificatesAwardsForm step={step} />
+        <Preview step={step} />
 
         <div style={{ display: "flex", justifyContent: "space-around" }}>
           {getPrevButton()}

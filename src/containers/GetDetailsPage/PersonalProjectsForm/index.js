@@ -18,7 +18,7 @@ function PersonalProjectsForm(props) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    savePersonalProjects(projects);
+    dispatch(savePersonalProjects(projects));
   }, [dispatch, projects]);
 
   if (props.step !== 6) {

@@ -1,6 +1,7 @@
 import { resumeConstants } from "../actions/constants";
 
 const initialState = {
+  format: null,
   personalDetails: {},
   profileSummary: "",
   experience: [],
@@ -14,6 +15,12 @@ const initialState = {
 
 const resumeReducer = (state = initialState, action) => {
   switch (action.type) {
+    case resumeConstants.RESUME_FORMAT:
+      state = {
+        ...state,
+        format: action.payload.format,
+      };
+      break;
     case resumeConstants.PERSONAL_DETAILS:
       state = {
         ...state,

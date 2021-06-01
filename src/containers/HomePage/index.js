@@ -5,7 +5,6 @@ import resumeFormat3 from "../../assets/images/resume_format_3.jpg";
 import resumeFormat4 from "../../assets/images/resume_format_4.jpg";
 import resumeFormat5 from "../../assets/images/resume_format_5.jpg";
 import resumeFormat6 from "../../assets/images/resume_format_6.jpg";
-import resumeFormat7 from "../../assets/images/resume_format_7.jpg";
 import Image from "../../components/Image";
 import "../../assets/scss/HomePage.scss";
 
@@ -22,7 +21,6 @@ function HomePage(props) {
         <Image src={resumeFormat4} format={4} />
         <Image src={resumeFormat5} format={5} />
         <Image src={resumeFormat6} format={6} />
-        <Image src={resumeFormat7} format={7} />
       </div>
       <div className="footer">
         <div>
@@ -31,16 +29,6 @@ function HomePage(props) {
             <li>
               <a className="link" href="https://my-codepen-ankit.netlify.app">
                 My CodePen
-              </a>
-            </li>
-            <li>
-              <a className="link" href="#block">
-                My Instagram
-              </a>
-            </li>
-            <li>
-              <a className="link" href="#block">
-                My Flipkart
               </a>
             </li>
             <li>

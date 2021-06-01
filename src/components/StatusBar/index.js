@@ -4,7 +4,7 @@ import "../../assets/scss/statusbar.scss";
 function StatusBar(props) {
   const [completedSteps, setCompletedSteps] = useState(props.completedSteps);
   let steps = [];
-  for (let i = 1; i <= 9; i++) {
+  for (let i = 1; i <= 10; i++) {
     steps.push(i);
   }
 

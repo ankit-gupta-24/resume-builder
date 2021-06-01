@@ -80,3 +80,12 @@ export const saveCertiAwards = (data) => {
     });
   };
 };
+
+export const setResumeFormat = (number) => {
+  return async (dispatch) => {
+    dispatch({
+      type: resumeConstants.RESUME_FORMAT,
+      payload: { format: number },
+    });
+  };
+};

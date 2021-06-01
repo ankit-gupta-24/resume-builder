@@ -22,7 +22,7 @@ function ExperienceForm(props) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    saveExperience(experience);
+    dispatch(saveExperience(experience));
   }, [dispatch, experience]);
 
   if (props.step !== 3) {
@@ -69,10 +69,10 @@ function ExperienceForm(props) {
           <label>Time Period</label>
           <input
             type="text"
-            name="timeperoid"
+            name="timeperiod"
             placeholder="e.g. 05/2000 - 10/2005"
             onChange={(e) => handleChange(e, i)}
-            value={experience[i].timeperoid}
+            value={experience[i].timeperiod}
           />
         </div>
         <div className="inputElem">

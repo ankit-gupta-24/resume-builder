@@ -22,7 +22,7 @@ function EducationForm(props) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    saveEducation(education);
+    dispatch(saveEducation(education));
   }, [dispatch, education]);
 
   if (props.step !== 4) {
@@ -73,7 +73,7 @@ function EducationForm(props) {
             name="timeperoid"
             placeholder="e.g. 05/2000 - 10/2005"
             onChange={(e) => handleChange(e, i)}
-            value={education[i].timeperoid}
+            value={education[i].timeperiod}
           />
         </div>
         <div className="inputElem">

@@ -7,7 +7,7 @@ function CertificatesAwadsForm(props) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    saveCertiAwards(certAward);
+    dispatch(saveCertiAwards(certAward));
   }, [certAward, dispatch]);
 
   if (props.step !== 9) {

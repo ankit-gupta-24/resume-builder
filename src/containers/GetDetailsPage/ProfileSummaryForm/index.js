@@ -7,7 +7,7 @@ function ProfileSummaryForm(props) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    saveProfileSummary(summary);
+    dispatch(saveProfileSummary(summary));
   }, [dispatch, summary]);
 
   if (props.step !== 2) {

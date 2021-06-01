@@ -8,7 +8,7 @@ function VolunteerWorkForm(props) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    saveVolunteerWork(volunteerWork);
+    dispatch(saveVolunteerWork(volunteerWork));
   }, [dispatch, volunteerWork]);
 
   if (props.step !== 8) {
