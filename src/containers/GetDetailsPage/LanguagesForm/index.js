@@ -8,7 +8,7 @@ function LanguagesForm(props) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(saveLanguages(languages));
+    dispatch(saveLanguages(languages.split(",")));
   }, [dispatch, languages]);
 
   if (props.step !== 7) {

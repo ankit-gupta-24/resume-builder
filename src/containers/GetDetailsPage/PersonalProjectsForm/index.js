@@ -8,10 +8,6 @@ function PersonalProjectsForm(props) {
       title: "",
       detail: "",
     },
-    {
-      title: "",
-      detail: "",
-    },
   ]);
   const [count, setCount] = useState(1);
 
@@ -25,21 +21,30 @@ function PersonalProjectsForm(props) {
     return null;
   }
 
-  const range = (n) => {
-    let arr = [];
-    for (let i = 0; i < n; i++) {
-      arr.push(i);
-    }
-    return arr;
-  };
-
   const handleChange = (e, i) => {
-    let newArr = projects;
+    let newArr = [...projects];
     newArr[i][e.target.name] = e.target.value;
     setProjects([...newArr]);
-    console.log(e.target.value);
   };
-  const genreateExpForm = (i) => {
+
+  const addField = () => {
+    let values = [...projects];
+    values.push({
+      title: "",
+      detail: "",
+    });
+    setProjects(values);
+    setCount(count + 1);
+  };
+
+  const removeField = () => {
+    let values = [...projects];
+    values.pop();
+    setProjects(values);
+    setCount(count - 1);
+  };
+
+  const genreateExpForm = (obj, i) => {
     return (
       <div className="form-group" key={i}>
         <div className="inputElem">
@@ -49,7 +54,7 @@ function PersonalProjectsForm(props) {
             name="title"
             placeholder="Enter Title"
             onChange={(e) => handleChange(e, i)}
-            value={projects[i].title}
+            value={obj.title}
           />
         </div>
 
@@ -60,7 +65,7 @@ function PersonalProjectsForm(props) {
             name="details"
             placeholder="Project Description"
             onChange={(e) => handleChange(e, i)}
-            value={projects[i].achievements}
+            value={obj.achievements}
           />
         </div>
       </div>
@@ -70,10 +75,15 @@ function PersonalProjectsForm(props) {
   return (
     <>
       <h2 className="title">Personal Projects</h2>
-      {range(count).map((i) => genreateExpForm(i))}
-      {count < projects.length && (
-        <p onClick={() => setCount(count + 1)} className="add-btn">
+      {projects.map((obj, idx) => genreateExpForm(obj, idx))}
+      {count < 2 && (
+        <p onClick={addField} className="add-btn">
           Add +
+        </p>
+      )}
+      {count > 1 && (
+        <p onClick={removeField} className="remove-btn">
+          Remove -
         </p>
       )}
     </>

@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { savePersonalDetails } from "../../../actions/";
 
 function PersonalDetailsForm(props) {
-  const [state, setState] = useState({
+  const [personalDetails, setPersonalDetails] = useState({
     name: "",
     positionOfResponsibility: "",
     email: "",
@@ -17,7 +17,7 @@ function PersonalDetailsForm(props) {
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
-    setState((prevState) => {
+    setPersonalDetails((prevState) => {
       return {
         ...prevState,
         [e.target.name]: e.target.value,
@@ -26,8 +26,8 @@ function PersonalDetailsForm(props) {
   };
 
   useEffect(() => {
-    dispatch(savePersonalDetails(state));
-  }, [state, dispatch]);
+    dispatch(savePersonalDetails(personalDetails));
+  }, [personalDetails, dispatch]);
 
   if (props.step !== 1) {
     return null;
@@ -44,17 +44,17 @@ function PersonalDetailsForm(props) {
             name="name"
             placeholder="Enter Full Name"
             onChange={handleChange}
-            value={state.name}
+            value={personalDetails.name}
           />
         </div>
         <div className="inputElem">
-          <label>Mobile Number</label>
+          <label>Mobile Number (with country code)</label>
           <input
             type="text"
             name="mobile"
             placeholder="Enter Mobile Number"
             onChange={handleChange}
-            value={state.mobile}
+            value={personalDetails.mobile}
             inputMode="numeric"
           />
         </div>
@@ -67,7 +67,7 @@ function PersonalDetailsForm(props) {
           name="email"
           placeholder="Enter Email"
           onChange={handleChange}
-          value={state.email}
+          value={personalDetails.email}
         />
       </div>
 
@@ -78,7 +78,7 @@ function PersonalDetailsForm(props) {
           name="positionOfResponsibility"
           placeholder="Enter Position Of Responsibility or Area Of Interest"
           onChange={handleChange}
-          value={state.positionOfResponsibility}
+          value={personalDetails.positionOfResponsibility}
         />
       </div>
 
@@ -89,7 +89,7 @@ function PersonalDetailsForm(props) {
           name="address"
           placeholder="Enter Address"
           onChange={handleChange}
-          value={state.address}
+          value={personalDetails.address}
         />
       </div>
 
@@ -100,7 +100,7 @@ function PersonalDetailsForm(props) {
           name="linkedin"
           placeholder="Enter LinkedIn URL"
           onChange={handleChange}
-          value={state.linkedin}
+          value={personalDetails.linkedin}
         />
       </div>
 
@@ -111,7 +111,7 @@ function PersonalDetailsForm(props) {
           name="twitter"
           placeholder="Enter Twitter URL"
           onChange={handleChange}
-          value={state.twitter}
+          value={personalDetails.twitter}
         />
       </div>
 
@@ -122,7 +122,7 @@ function PersonalDetailsForm(props) {
           name="github"
           placeholder="Enter GitHub URL"
           onChange={handleChange}
-          value={state.github}
+          value={personalDetails.github}
         />
       </div>
     </>

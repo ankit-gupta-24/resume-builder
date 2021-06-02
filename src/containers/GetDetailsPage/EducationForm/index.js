@@ -10,12 +10,6 @@ function EducationForm(props) {
       timeperiod: "",
       achievements: "",
     },
-    {
-      course: "",
-      college: "",
-      timeperiod: "",
-      achievements: "",
-    },
   ]);
   const [count, setCount] = useState(1);
 
@@ -29,31 +23,42 @@ function EducationForm(props) {
     return null;
   }
 
-  const range = (n) => {
-    let arr = [];
-    for (let i = 0; i < n; i++) {
-      arr.push(i);
-    }
-    return arr;
-  };
-
   const handleChange = (e, i) => {
-    let newArr = education;
+    let newArr = [...education];
     newArr[i][e.target.name] = e.target.value;
     setEducation([...newArr]);
-    console.log(e.target.value);
   };
-  const genreateExpForm = (i) => {
+
+  const addField = () => {
+    let values = [...education];
+    values.push({
+      course: "",
+      college: "",
+      timeperiod: "",
+      achievements: "",
+    });
+    setEducation(values);
+    setCount(count + 1);
+  };
+
+  const removeField = () => {
+    let values = [...education];
+    values.pop();
+    setEducation(values);
+    setCount(count - 1);
+  };
+
+  const genreateExpForm = (obj, idx) => {
     return (
-      <div className="form-group" key={i}>
+      <div className="form-group" key={idx}>
         <div className="inputElem">
           <label>Course</label>
           <input
             type="text"
             name="course"
             placeholder="Enter Course"
-            onChange={(e) => handleChange(e, i)}
-            value={education[i].course}
+            onChange={(e) => handleChange(e, idx)}
+            value={obj.course}
           />
         </div>
         <div className="inputElem">
@@ -62,8 +67,8 @@ function EducationForm(props) {
             type="text"
             name="college"
             placeholder="College Name"
-            onChange={(e) => handleChange(e, i)}
-            value={education[i].college}
+            onChange={(e) => handleChange(e, idx)}
+            value={obj.college}
           />
         </div>
         <div className="inputElem">
@@ -72,20 +77,18 @@ function EducationForm(props) {
             type="text"
             name="timeperoid"
             placeholder="e.g. 05/2000 - 10/2005"
-            onChange={(e) => handleChange(e, i)}
-            value={education[i].timeperiod}
+            onChange={(e) => handleChange(e, idx)}
+            value={obj.timeperiod}
           />
         </div>
         <div className="inputElem">
-          <label>
-            Achievements Throughout Course (atmost 2 seperated by dollar ($)){" "}
-          </label>
+          <label>Achievements Throughout Course (atmost 2)</label>
           <textarea
             type="text"
             name="achievements"
             placeholder="Achievements Throughout Course like prizes, events, etc."
-            onChange={(e) => handleChange(e, i)}
-            value={education[i].achievements}
+            onChange={(e) => handleChange(e, idx)}
+            value={obj.achievements}
           />
         </div>
       </div>
@@ -95,10 +98,16 @@ function EducationForm(props) {
   return (
     <>
       <h2 className="title">Education</h2>
-      {range(count).map((i) => genreateExpForm(i))}
-      {count < education.length && (
-        <p onClick={() => setCount(count + 1)} className="add-btn">
+      {education.map((obj, idx) => genreateExpForm(obj, idx))}
+      {count < 2 && (
+        <p onClick={addField} className="add-btn">
           Add +
+        </p>
+      )}
+
+      {count > 1 && (
+        <p onClick={removeField} className="remove-btn">
+          Remove -
         </p>
       )}
     </>

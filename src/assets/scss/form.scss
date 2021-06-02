@@ -70,6 +70,12 @@ button {
   padding: 0.5rem;
 }
 
+.remove-btn {
+  cursor: pointer;
+  color: $red;
+  padding: 0.5rem;
+}
+
 .print-btn {
   @extend button;
   background: $success;

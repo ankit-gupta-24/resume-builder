@@ -8,22 +8,6 @@ function SkillsForm(props) {
       skill: "",
       level: "",
     },
-    {
-      skill: "",
-      level: "",
-    },
-    {
-      skill: "",
-      level: "",
-    },
-    {
-      skill: "",
-      level: "",
-    },
-    {
-      skill: "",
-      level: "",
-    },
   ]);
   const [count, setCount] = useState(1);
 
@@ -37,22 +21,30 @@ function SkillsForm(props) {
     return null;
   }
 
-  const range = (n) => {
-    let arr = [];
-    for (let i = 0; i < n; i++) {
-      arr.push(i);
-    }
-    return arr;
-  };
-
   const handleChange = (e, i) => {
-    let newArr = skills;
+    let newArr = [...skills];
     newArr[i][e.target.name] = e.target.value;
     setSkills([...newArr]);
-    console.log(e.target.value);
   };
 
-  const genreateExpForm = (i) => {
+  const addField = () => {
+    let values = [...skills];
+    values.push({
+      skill: "",
+      level: "",
+    });
+    setSkills(values);
+    setCount(count + 1);
+  };
+
+  const removeField = (i) => {
+    let values = [...skills];
+    values.splice(i, 1);
+    setSkills(values);
+    setCount(count - 1);
+  };
+
+  const genreateExpForm = (obj, i) => {
     return (
       <div className="form-row" key={i}>
         <div className="inputElem">
@@ -62,7 +54,7 @@ function SkillsForm(props) {
             name="skill"
             placeholder="e.g.Python"
             onChange={(e) => handleChange(e, i)}
-            value={skills[i].skill}
+            value={obj.skill}
           />
         </div>
 
@@ -71,7 +63,7 @@ function SkillsForm(props) {
           <input
             type="text"
             name="level"
-            value={skills[i].level}
+            value={obj.level}
             list="data"
             onChange={(e) => handleChange(e, i)}
           />
@@ -81,6 +73,11 @@ function SkillsForm(props) {
             <option value="Advanced">Advanced</option>
             <option value="Expert">Expert</option>
           </datalist>
+          {count >1 && (
+            <p onClick={() => removeField(i)} className="remove-btn">
+              Remove -
+            </p>
+          )}
         </div>
       </div>
     );
@@ -89,9 +86,9 @@ function SkillsForm(props) {
   return (
     <>
       <h2 className="title">Skills</h2>
-      {range(count).map((i) => genreateExpForm(i))}
-      {count < skills.length && (
-        <p onClick={() => setCount(count + 1)} className="add-btn">
+      {skills.map((obj, idx) => genreateExpForm(obj, idx))}
+      {count < 5 && (
+        <p onClick={addField} className="add-btn">
           Add +
         </p>
       )}

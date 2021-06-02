@@ -7,7 +7,7 @@ function CertificatesAwadsForm(props) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(saveCertiAwards(certAward));
+    dispatch(saveCertiAwards(certAward.split("\n")));
   }, [certAward, dispatch]);
 
   if (props.step !== 9) {
@@ -17,7 +17,7 @@ function CertificatesAwadsForm(props) {
     <>
       <h2 className="title">Certificates And Awads</h2>
       <div className="inputElem">
-        <label>Certificates And Awads (atmost 4 seperated by dollar($))</label>
+        <label>Certificates And Awads (atmost 4)</label>
         <textarea
           type="text"
           name="certAward"

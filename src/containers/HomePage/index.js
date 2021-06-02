@@ -50,7 +50,7 @@ function HomePage(props) {
             <li>
               <a
                 className="link"
-                href="https://github.com/ankit-gupta-24/textutils"
+                href="https://textutils-ankit.herokuapp.com"
               >
                 TextUtils
               </a>
