@@ -41,9 +41,11 @@
 .footer {
   @extend .flex-row;
   justify-content: space-around;
+  flex-wrap: wrap;
   margin: 3rem auto;
   div {
     text-align: center;
+    margin: 1rem;
     li {
       list-style: none;
       line-height: 1.5rem;

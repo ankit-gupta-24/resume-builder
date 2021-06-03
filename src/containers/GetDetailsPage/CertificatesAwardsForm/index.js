@@ -15,9 +15,9 @@ function CertificatesAwadsForm(props) {
   }
   return (
     <>
-      <h2 className="title">Certificates And Awads</h2>
+      <h2 className="title">Certificates And Awards</h2>
       <div className="inputElem">
-        <label>Certificates And Awads (atmost 4)</label>
+        <label>Certificates And Awards (atmost 4)</label>
         <textarea
           type="text"
           name="certAward"

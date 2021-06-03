@@ -160,8 +160,6 @@ function Preview(props) {
     <>
       <iframe
         srcDoc={srcDoc}
-        width="768"
-        height="450"
         id="resumeFrame"
         title={personalDetails.name + "'s Resume"}
       />
