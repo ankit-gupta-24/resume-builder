@@ -75,7 +75,7 @@ function EducationForm(props) {
           <label>Time Period</label>
           <input
             type="text"
-            name="timeperoid"
+            name="timeperiod"
             placeholder="e.g. 05/2000 - 10/2005"
             onChange={(e) => handleChange(e, idx)}
             value={obj.timeperiod}

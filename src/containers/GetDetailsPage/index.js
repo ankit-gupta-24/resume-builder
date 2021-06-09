@@ -22,12 +22,6 @@ function GetDetailsPage(props) {
     dispatch(setResumeFormat(props.match.params.fn));
   }, [dispatch, props.match.params.fn]);
 
-  const printIframe = () => {
-    let frame = document.getElementById("resumeFrame");
-    frame.contentWindow.focus();
-    frame.contentWindow.print();
-  };
-
   const prev = () => {
     setStep(step - 1);
   };
@@ -45,17 +39,23 @@ function GetDetailsPage(props) {
   const getNextButton = () => {
     if (step > 9) {
       return (
-        <>
-          <small className="warning">
-            <b>Please check everything before printing.</b>
-          </small>
-          <button className="print-btn" onClick={printIframe}>
-            Print
-          </button>
-        </>
+        <small className="warning">
+          <b>Please check everything before printing.</b>
+        </small>
       );
     }
-    return <button onClick={next}>Next</button>;
+    return (
+      <>
+        <small className="warning">
+          <b>
+            If you don't have any information
+            <br />
+            leave them blank.
+          </b>
+        </small>
+        <button onClick={next}>Next</button>
+      </>
+    );
   };
 
   return (
