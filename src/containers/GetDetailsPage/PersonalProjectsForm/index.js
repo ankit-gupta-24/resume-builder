@@ -62,10 +62,10 @@ function PersonalProjectsForm(props) {
           <label>Details</label>
           <textarea
             type="text"
-            name="details"
+            name="detail"
             placeholder="Project Description"
             onChange={(e) => handleChange(e, i)}
-            value={obj.achievements}
+            value={obj.detail}
           />
         </div>
       </div>

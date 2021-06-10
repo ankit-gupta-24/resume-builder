@@ -1,10 +1,10 @@
 import React from "react";
 import resumeFormat1 from "../../assets/images/resume_format_1.jpg";
 import resumeFormat2 from "../../assets/images/resume_format_2.jpg";
-import resumeFormat3 from "../../assets/images/resume_format_3.jpg";
-import resumeFormat4 from "../../assets/images/resume_format_4.jpg";
-import resumeFormat5 from "../../assets/images/resume_format_5.jpg";
-import resumeFormat6 from "../../assets/images/resume_format_6.jpg";
+// import resumeFormat3 from "../../assets/images/resume_format_3.jpg";
+// import resumeFormat4 from "../../assets/images/resume_format_4.jpg";
+// import resumeFormat5 from "../../assets/images/resume_format_5.jpg";
+// import resumeFormat6 from "../../assets/images/resume_format_6.jpg";
 import Image from "../../components/Image";
 import "../../assets/scss/HomePage.scss";
 
@@ -17,10 +17,10 @@ function HomePage(props) {
       <div className="templates">
         <Image src={resumeFormat1} format={1} />
         <Image src={resumeFormat2} format={2} />
-        <Image src={resumeFormat3} format={3} />
+        {/* <Image src={resumeFormat3} format={3} />
         <Image src={resumeFormat4} format={4} />
         <Image src={resumeFormat5} format={5} />
-        <Image src={resumeFormat6} format={6} />
+        <Image src={resumeFormat6} format={6} /> */}
       </div>
       <div className="footer">
         <div>
@@ -48,10 +48,7 @@ function HomePage(props) {
               </a>
             </li>
             <li>
-              <a
-                className="link"
-                href="https://textutils-ankit.herokuapp.com"
-              >
+              <a className="link" href="https://textutils-ankit.herokuapp.com">
                 TextUtils
               </a>
             </li>

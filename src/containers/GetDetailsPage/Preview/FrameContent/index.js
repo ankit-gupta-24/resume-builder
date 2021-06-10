@@ -10,132 +10,172 @@ const level = {
 export class FrameContent extends React.Component {
   constructor(props) {
     super(props);
+    require(`../../../../assets/scss/resume/format${this.props.resume.format}.scss`);
   }
   render() {
+    let {
+      format,
+      personalDetails,
+      profileSummary,
+      experience,
+      education,
+      skills,
+      personalProjects,
+      languages,
+      volunteerWork,
+      certiAwards,
+    } = this.props.resume;
+
+    format = Number(format);
+
     return (
       <>
-        <div ref={this.props.reference}>
-          <link
-            rel="stylesheet"
-            href={`${process.env.PUBLIC_URL}/css/format${this.props.resume.format}.css`}
-          />
-          <header>
+        <div
+          ref={this.props.reference}
+          className={`resume-container-f${format}`}
+        >
+          <header className={`resume-header-f${format}`}>
             <div>
-              <h1>{this.props.resume.personalDetails.name}</h1>
-              <h4>
-                {Number(this.props.resume.format) !== 3
-                  ? this.props.resume.personalDetails.positionOfResponsibility
-                  : ""}
+              <h1 className={`h1-f${format}`}>{personalDetails.name}</h1>
+              <h4 className={`h4-f${format}`}>
+                {format !== 3 ? personalDetails.positionOfResponsibility : ""}
               </h4>
             </div>
             <div>
-              <h3>Personal Info</h3>
-              <hr />
-              <p>
-                <b>Email: </b> {this.props.resume.personalDetails.email}
-              </p>
-              <p>
-                <b>Phone: </b> {this.props.resume.personalDetails.mobile}
-              </p>
-              <p>
-                <b>Address: </b> {this.props.resume.personalDetails.address}
-              </p>
-              {this.props.resume.personalDetails.linkedin &&
-              [1, 4].includes(Number(this.props.resume.format)) ? (
+              <div>
                 <p>
-                  <b>LinkedIn: </b> {this.props.resume.personalDetails.linkedin}
+                  {[1, 3, 4].includes(format) && <b>E-mail: &nbsp;&nbsp;</b>}
+                  {personalDetails.email}
                 </p>
-              ) : (
-                ""
-              )}
-              {this.props.resume.personalDetails.github ? (
                 <p>
-                  <b>GitHub: </b> {this.props.resume.personalDetails.github}
+                  {[1, 3, 4].includes(format) && <b>Phone: &nbsp;&nbsp;</b>}
+                  {personalDetails.mobile}
                 </p>
-              ) : (
-                ""
-              )}
-              {[1, 4].includes(Number(this.props.resume.format)) &&
-              this.props.resume.personalDetails.twitter ? (
                 <p>
-                  <b>Twitter: </b> {this.props.resume.personalDetails.twitter}
+                  {[1, 3, 4].includes(format) && <b>Address: &nbsp;&nbsp;</b>}
+                  {personalDetails.address}
                 </p>
-              ) : (
-                ""
-              )}
+              </div>
+              <div>
+                {personalDetails.linkedin && [1, 4].includes(format) ? (
+                  <p>
+                    <b>LinkedIn: </b>&nbsp;&nbsp; {personalDetails.linkedin}
+                  </p>
+                ) : (
+                  ""
+                )}
+                {personalDetails.github ? (
+                  <p>
+                    <b>GitHub: </b>&nbsp;&nbsp; {personalDetails.github}
+                  </p>
+                ) : (
+                  ""
+                )}
+                {[1, 4].includes(format) && personalDetails.twitter ? (
+                  <p>
+                    <b>Twitter: </b>&nbsp;&nbsp; {personalDetails.twitter}
+                  </p>
+                ) : (
+                  ""
+                )}
+              </div>
             </div>
           </header>
 
-          <div>
-            <h3>
-              {[2, 3, 5].includes(Number(this.props.resume.format))
-                ? "Profile"
-                : ""}
+          <div className={`profile-f${format}`}>
+            <h3 className={`h3-f${format}`}>
+              {[2, 3, 5].includes(format) ? "Profile" : ""}
             </h3>
-            <hr />
-            <p>{this.props.resume.profileSummary}</p>
+            <p>{profileSummary}</p>
           </div>
 
-          <div>
-            <h3>Experience</h3>
-            <hr />
-
-            {this.props.resume.experience.map((exp) => {
+          <div className={`experience-f${format}`}>
+            <h3 className={`h3-f${format}`}>Experience</h3>
+            {experience.map((exp, idx) => {
               if (!exp.designation) {
                 return null;
               }
               return (
-                <div>
-                  <h4>{exp.designation}</h4>
-                  <i>{exp.company}</i>
-                  <small>{exp.timeperiod}</small>
-                  <small>{exp.rolesAndResponsibilities}</small>
+                <div className={`exp-block-f${format}`} key={idx}>
+                  <h4 className={`h4-f${format}`}>{exp.designation}</h4>
+                  <p>
+                    <i>{exp.company}</i>
+                  </p>
+                  <p>
+                    <small className={`exp-time-f${format}`}>
+                      {exp.timeperiod}
+                    </small>
+                  </p>
+                  <ul>
+                    {exp.rolesAndResponsibilities
+                      .split("\n")
+                      .map((item, idx) => {
+                        if (idx > 1) return null;
+
+                        return <li key={idx}>{item.trim()}</li>;
+                      })}
+                  </ul>
                 </div>
               );
             })}
           </div>
 
-          <div>
-            <h3>Education</h3>
-            <hr />
-            {this.props.resume.education.map((edu) => {
+          <div className={`education-f${format}`}>
+            <h3 className={`h3-f${format}`}>Education</h3>
+            {education.map((edu) => {
               if (!edu.course) {
                 return null;
               }
               return (
-                <div>
-                  <h4>{edu.course}</h4>
-                  <i>{edu.college}</i>
-                  <small>{edu.timeperiod}</small>
-                  <small>{edu.achievements}</small>
+                <div className={`edu-block-f${format}`}>
+                  <h4 className={`h4-f${format}`}>{edu.course}</h4>
+                  <p>
+                    <i>{edu.college}</i>
+                  </p>
+                  <p className={`edu-time-f${format}`}>
+                    <small>{edu.timeperiod}</small>
+                  </p>
+                  <ul>
+                    {edu.achievements.split("\n").map((item, idx) => {
+                      if (idx > 1) return null;
+
+                      return <li key={idx}>{item.trim()}</li>;
+                    })}
+                  </ul>
                 </div>
               );
             })}
           </div>
 
-          <div>
-            <h3>Skills</h3>
-            <hr />
+          <div className={`skills-f${format}`}>
+            <h3 className={`h3-f${format}`}>Skills</h3>
 
-            {this.props.resume.skills.map((obj) => {
+            {skills.map((obj) => {
               if (!obj.skill) {
                 return null;
               }
               let value = level[obj.level];
               return (
-                <>
-                  <p>{obj.skill}</p>
-                  <progress value={Number(value)} min="0" max="100"></progress>
-                </>
+                <div>
+                  <span>
+                    <b>{obj.skill}</b>
+                  </span>
+                  {[1, 4, 5].includes(format) && (
+                    <progress
+                      value={Number(value)}
+                      min="0"
+                      max="100"
+                    ></progress>
+                  )}
+                </div>
               );
             })}
           </div>
 
-          {Number(this.props.resume.format) === 2 ? (
-            <div>
-              <h3>Personal Projects</h3>
-              <hr />
-              {this.props.resume.personalProjects.map((obj) => {
+          {format === 2 ? (
+            <div className={`personal-projects-f${format}`}>
+              <h3 className={`h3-f${format}`}>Personal Projects</h3>
+              {personalProjects.map((obj) => {
                 if (!obj.title) {
                   return null;
                 }
@@ -145,7 +185,7 @@ export class FrameContent extends React.Component {
                     <p>
                       <b>{obj.title}</b>
                     </p>
-                    <p>{obj.details}</p>
+                    <p>{obj.detail}</p>
                   </div>
                 );
               })}
@@ -153,35 +193,30 @@ export class FrameContent extends React.Component {
           ) : (
             ""
           )}
-          {Number(this.props.resume.format) === 3 ? (
-            <div>
-              <h3>Languages</h3>
-              <hr />
-              {this.props.resume.languages.map((name) => (
+          {format === 3 ? (
+            <div className={`languages-f${format}`}>
+              <h3 className={`h3-f${format}`}>Languages</h3>
+              {languages.map((name) => (
                 <p>{name}</p>
               ))}
             </div>
           ) : (
             ""
           )}
-          {Number(this.props.resume.format) === 2 ? (
-            <div>
-              <h3>Volunteer Work</h3>
-              <hr />
-              {this.props.resume.volunteerWork}
+          {format === 2 ? (
+            <div className={`volunteer-work-f${format}`}>
+              <h3 className={`h3-f${format}`}>Volunteer Work</h3>
+              <p>{volunteerWork}</p>
             </div>
           ) : (
             ""
           )}
 
-          {[1, 3, 4].includes(Number(this.props.resume.format)) ? (
-            <div>
-              <h3>Certificates and Awards</h3>
-              <hr />
+          {[1, 3, 4].includes(format) ? (
+            <div className={`certi-f${format}`}>
+              <h3 className={`h3-f${format}`}>Certificates and Awards</h3>
               <ul>
-                {this.props.resume.certiAwards.map(
-                  (item) => item && <li>{item.trim()}</li>
-                )}
+                {certiAwards.map((item) => item && <li>{item.trim()}</li>)}
               </ul>
             </div>
           ) : (

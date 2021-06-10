@@ -1,0 +1,99 @@
+.resume-container-f1 {
+  margin: 20px;
+}
+
+.resume-header-f1 {
+  background-color: #3f3f3f;
+  padding: 30px;
+  color: #fff;
+}
+
+.h1-f1 {
+  font-weight: 600;
+  font-size: 2.5rem;
+  text-transform: capitalize;
+}
+.resume-header-f1 > div:nth-child(2) {
+  margin-top: 10px;
+  font-size: 0.8rem;
+  display: flex;
+}
+
+.resume-header-f1 > div:nth-child(2) div {
+  width: 48%;
+  display: flex;
+  flex-direction: column;
+}
+.resume-header-f1 > div:nth-child(2) div p {
+  margin: 5px auto 5px 0;
+}
+
+.h4-f1 {
+  text-transform: capitalize;
+  margin: 3px auto;
+}
+i {
+  font-size: 0.9rem;
+  text-transform: capitalize;
+}
+
+.profile-f1,
+.experience-f1,
+.education-f1,
+.skills-f1,
+.certi-f1 {
+  margin: 10px 10px;
+}
+
+.experience-f1 h3,
+.education-f1 h3,
+.skills-f1 h3,
+.certi-f1 h3 {
+  color: #3f3f3f;
+  text-transform: uppercase;
+}
+
+.profile-f1 {
+  text-align: justify;
+  font-size: 0.8rem;
+}
+
+.exp-block-f1 {
+  position: relative;
+  margin: 10px auto auto 15%;
+}
+.exp-time-f1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: -15%;
+  width: 15%;
+}
+.exp-block-f1 ul,
+.edu-block-f1 ul {
+  margin-left: 15px;
+  font-size: 0.8rem;
+}
+
+.edu-block-f1 {
+  @extend .exp-block-f1;
+}
+.edu-time-f1 {
+  @extend .exp-time-f1;
+}
+
+.skills-f1 div {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px auto;
+  padding-left: 20px;
+  font-size: 0.8rem;
+}
+
+.certi-f1 ul {
+  margin-left: 40px;
+}
+.certi-f1 ul li {
+  padding: 2px;
+  font-size: 0.8rem;
+}
